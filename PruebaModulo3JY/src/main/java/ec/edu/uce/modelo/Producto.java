@@ -30,6 +30,8 @@ public class Producto {
 	@Column(name = "prod_id")
 	private Integer id;
 	
+	@Column(name = "prod_nombre")
+	private String nombre;
 	
 	@Column(name = "prod_codigo_barras")
 	private String codigoBarras;
@@ -40,6 +42,9 @@ public class Producto {
 	@Column(name = "prod_stock")
 	private Integer stock;
 	
+	@Column(name = "prod_stock_total")
+	private Integer stockTotal;
+	
 	@Column(name = "prod_precio")
 	private BigDecimal precio;
 
@@ -47,7 +52,12 @@ public class Producto {
 	@JoinColumn(name = "prod_fk_detalle")
 	private DetalleVenta detalle; 
 	
-	
+	@ManyToOne
+	@JoinColumn(name = "prod_fk_detalle")
+	private Venta venta; 
+
+
+	//GET Y SET	
 	public DetalleVenta getDetalle() {
 		return detalle;
 	}
@@ -55,8 +65,32 @@ public class Producto {
 	public void setDetalle(DetalleVenta detalle) {
 		this.detalle = detalle;
 	}
+	
+	public Integer getStockTotal() {
+		return stockTotal;
+	}
+	
 
-	//GET Y SET
+	public Venta getVenta() {
+		return venta;
+	}
+
+	public void setVenta(Venta venta) {
+		this.venta = venta;
+	}
+
+	public void setStockTotal(Integer stockTotal) {
+		this.stockTotal = stockTotal;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -99,9 +133,12 @@ public class Producto {
 
 	@Override
 	public String toString() {
-		return "Producto [id=" + id + ", codigoBarras=" + codigoBarras + ", categoria=" + categoria + ", stock=" + stock
-				+ ", precio=" + precio + "]";
+		return "Producto [id=" + id + ", nombre=" + nombre + ", codigoBarras=" + codigoBarras + ", categoria="
+				+ categoria + ", stock=" + stock + ", stockTotal=" + stockTotal + ", precio=" + precio + "]";
 	}
+
+
+	
 	
 	
 }

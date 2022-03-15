@@ -9,4 +9,8 @@ public interface IProdictoRepo {
 	public Producto read(Integer id); 
 	public void update(Producto producto); 
 	public void delete(Integer id); 
+	
+	public Producto encontrarPorNombre(String nombre); 
+	public Producto encontrarPorCodigoBarras(String codigo); 
+	
 }

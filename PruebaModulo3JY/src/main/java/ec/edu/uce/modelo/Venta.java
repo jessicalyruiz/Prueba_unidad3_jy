@@ -39,6 +39,10 @@ public class Venta {
 
 	@OneToMany(mappedBy = "venta",cascade = CascadeType.ALL)
 	private List<DetalleVenta> detalles;
+	
+	@OneToMany(mappedBy = "venta",cascade = CascadeType.ALL)
+	private List<Producto> productos;
+	
 	public List<DetalleVenta> getDetalles() {
 		return detalles;
 	}
@@ -54,6 +58,14 @@ public class Venta {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
 	}
 
 	public String getNumero() {
